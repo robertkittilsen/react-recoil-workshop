@@ -1,9 +1,8 @@
-import { Box, Button, Input } from "@chakra-ui/react";
+import { Box, Button, Input, InputGroup } from '@chakra-ui/react';
 import { useState } from "react";
 import { useSetRecoilState } from "recoil";
 import { todoListState } from "../recoil/atoms/todoListAtom"
 
-// utility for creating unique Id
 let id = 0;
 function getId() {
   return id++;
@@ -16,10 +15,24 @@ function TodoItemCreator() {
     setInputValue(value);
   };
 
+  /* const addItem = () => {
+    setTodoList((oldTodoList) => [
+      ...oldTodoList,
+      {
+        id: getId(),
+        text: inputValue,
+        isComplete: false,
+      },
+    ]);
+    setInputValue("");
+  }; */
+
   return (
-    <Box>
-      <Input type="text" value={inputValue} onChange={onChange} />
-       {/* <Button onClick={addItem}>Add</Button> */}
+    <Box my={4}>
+      <InputGroup>
+        <Input type="text" value={inputValue} onChange={onChange} />
+        {/* <Button onClick={addItem} ml={8}>Legg til</Button> */}
+      </InputGroup>
     </Box>
   );
 }

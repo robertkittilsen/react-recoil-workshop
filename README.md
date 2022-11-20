@@ -56,6 +56,9 @@ Gjennom å gjøre dette vil vi lære oss om atomer, selektorer, atom familier og
 
 💡 TodoApp-komponenten som brukes i oppgavene finner du i mappen `src/TodoListApp.tsx`. 
 
+Kommenter inn denne i `App.tsx` og kjør `npm start` for å se at appen kjører.
+Du vil nå se et grunnleggende eksempel på bruk av Recoil. Se gjennom koden for `UseRecoilStateExample`, `Atom Example` og `Selector Example` for å se hvordan disse fungerer.
+
 ### Oppgave 2a)
 
 🏆 For at recoil skal fungere må vi legge til `RecoilRoot` rundt hele appen. Dette gjør vi ved å importere `RecoilRoot` fra `recoil` og legge den rundt `TodoListApp` i `App.tsx`.
@@ -95,16 +98,16 @@ export const todoListState = atom<TodoItem[]>({
 
 Flott du har laget ditt første atom!
 
-🏆 Vi gir atomet en unik nøkkel og setter default verdien til et tomt array. For å lese innholdet til dette atomet kan vi bruke `useRecoilValue` hooken. Ta i bruk denne hooken i TodoList.tsx,
+🏆 Vi gir atomet en unik nøkkel og setter default verdien til et tomt array. For å lese innholdet til dette atomet kan vi bruke `useRecoilValue` hooken. Ta i bruk denne hooken i `TodoList.tsx`.
 
 <details>
  <summary>🚨 Løsning</summary>
 
   ```js
   import { useRecoilValue } from "recoil";
+  import { todoListState } from "../recoil/atoms/todoListAtom";
   import TodoItemCreator from "./TodoItemCreator";
   import TodoItemView from "./TodoItem";
-  import { todoListState } from "../recoil/atoms/todoListAtom";
 
   const TodoList = () => {
     // Her leser vi innholdet til todoListState
@@ -124,23 +127,7 @@ Flott du har laget ditt første atom!
 
 
 💡 For å lage nye todo items trenger vi en setter funksjon som skal oppdatere innholdet i `todoListState`. Vi kan bruke `useSetRecoilState` for å få tak i denne funksjonen.
-Bruk bruk denne hooken i `TodoItemCreator.tsx` sammen med denne addItem funksjonen:
-
-```js
-
-const addItem = () => {
-  setTodoList((oldTodoList) => [
-    ...oldTodoList,
-    {
-      id: getId(),
-      text: inputValue,
-      isComplete: false
-    }
-  ]);
-  setInputValue("");
-};
-
-```
+Lag en `setTodoList` funksjon ved bruk av denne hooken i `TodoItemCreator.tsx` og kommenter inn `addItem()` funksjonen og kommenter inn knappen som tar i bruk `addItem()` i `TodoItemCreator.tsx`.
 
 <details>
  <summary>🚨 Løsning</summary>
@@ -159,13 +146,20 @@ const addItem = () => {
   ]);
   setInputValue("");
 };
+
+return (
+  <Box my={4}>
+    <InputGroup>
+      <Input type="text" value={inputValue} onChange={onChange} />
+      <Button onClick={addItem} ml={8}>Legg til</Button>
+    </InputGroup>
+  </Box>
+);
 ```
 
 </details>
 
-Vi bruker `useSetRecoilState` for å få tak i en setter funksjon som vi kan bruke for å oppdatere `todoListState`. Akkurat som react's `useState`.
-
-Kommenter ut linje 22 i `TodoItemCreator.tsx`.
+Vi bruker `useSetRecoilState` for å få tak i en setter funksjon som vi kan bruke for å oppdatere `todoListState`. Vi bruker denne setter funksjonen for å oppdatere `todoListState` med en ny todo item.
 
 ### Oppgave 3b)
 
@@ -190,8 +184,8 @@ Vi bruker `useRecoilState` til å lese `todoListState` og til å få en setter-f
 const [todoList, setTodoList] = useRecoilState<TodoItem[]>(todoListState);
 ```
 
+Og med det så har vi en fullverdig todo app! 🎉
+
 🏆🏆🏆
 
-Som du ser brukes `useRecoilState` på samme måte som `useState`. Det er bare at `useRecoilState` tar inn et atom som argument.
-
-Og med det så har vi en fullverdig todo app! 🎉
+Som du ser brukes `useRecoilState` på samme måte som `useState`. Det er bare at `useRecoilState` tar inn et atom som argument, og kan brukes av flere komponenter.

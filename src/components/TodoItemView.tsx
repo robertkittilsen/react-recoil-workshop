@@ -1,4 +1,4 @@
-import { Button, Input, InputGroup } from "@chakra-ui/react";
+import { Button, Checkbox, Input, InputGroup } from "@chakra-ui/react";
 import { useState } from "react";
 import { useRecoilState } from "recoil";
 import { todoListState } from "../recoil/atoms/todoListAtom";
@@ -16,12 +16,14 @@ const replaceItemAtIndex = (arr: TodoItem[], index: number, newValue: TodoItem) 
 const removeItemAtIndex = (arr: TodoItem[], index: number) => {
   return [...arr.slice(0, index), ...arr.slice(index + 1)];
 };
+
 interface TodoItemViewProps {
   item: TodoItem;
   key: number;
 }
+
 const TodoItemView = ({item}: TodoItemViewProps) => {
-  const [todoList, setTodoList] = useState<TodoItem[]>([])
+  const [todoList, setTodoList] = useState<TodoItem[]>([]);
   const index = todoList.findIndex((listItem) => listItem === item);
 
   const editItemText = ({
@@ -53,12 +55,8 @@ const TodoItemView = ({item}: TodoItemViewProps) => {
   return (
     <InputGroup>
       <Input type="text" value={item.text} onChange={editItemText} />
-      <Input
-        type="checkbox"
-        checked={item.isComplete}
-        onChange={toggleItemCompletion}
-      />
-      <Button onClick={deleteItem}>X</Button>
+      <Checkbox size="lg" mx={4} checked={item.isComplete} onChange={toggleItemCompletion} />
+      <Button onClick={deleteItem}>Slett</Button>
     </InputGroup>
   );
 };
