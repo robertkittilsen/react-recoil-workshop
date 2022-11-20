@@ -53,10 +53,10 @@ Gjennom å gjøre dette vil vi lære oss om atomer, selektorer og hooks fra Reco
 
 ## Oppgave 1: Oppstart av Todo app
 
-💡 TodoApp-komponenten som brukes i oppgavene finner du i mappen `src/TodoListApp.tsx`. 
-
-Kommenter inn denne i `App.tsx` og kjør `npm start` for å se at appen kjører.
+Kjør `npm start` for å se at appen kjører.
 Du vil nå se et grunnleggende eksempel på bruk av Recoil. Se gjennom koden for `UseRecoilStateExample`, `Atom Example` og `Selector Example` for å se hvordan disse fungerer.
+
+💡 TodoApp-komponenten som brukes i oppgavene finner du i mappen `src/TodoListApp.tsx`. 
 
 ### Oppgave 2a)
 
