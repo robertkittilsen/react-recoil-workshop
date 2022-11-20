@@ -56,9 +56,9 @@ Gjennom å gjøre dette vil vi lære oss om atomer, selektorer og hooks fra Reco
 Kjør `npm start` for å se at appen kjører.
 Du vil nå se et grunnleggende eksempel på bruk av Recoil. Se gjennom koden for `UseRecoilStateExample`, `Atom Example` og `Selector Example` for å se hvordan disse fungerer.
 
-💡 TodoApp-komponenten som brukes i oppgavene finner du i mappen `src/TodoListApp.tsx`. 
+💡 TodoApp-komponenten som brukes i oppgavene finner du her: `src/TodoListApp.tsx`. Husk å kommentere inn denne og fjern ´<Examples />´ før du starter på todo liste oppgavene.
 
-### Oppgave 2a)
+### Oppgave 2 a)
 
 🏆 For at recoil skal fungere må vi legge til `RecoilRoot` rundt hele appen. Dette gjør vi ved å importere `RecoilRoot` fra `recoil` og legge den rundt `TodoListApp` i `App.tsx`.
 
@@ -75,7 +75,7 @@ import { RecoilRoot } from "recoil";
 
 </details>
 
-### Oppgave 2b)
+### Oppgave 2 b)
 
 🏆 La oss lage et atom kalt todoListState som vil holde todo-listen vår:
 
@@ -93,7 +93,7 @@ export const todoListState = atom<TodoItem[]>({
 
 </details>
 
-### Oppgave 3a)
+### Oppgave 3 a)
 
 Flott du har laget ditt første atom!
 Vi gir atomet en unik nøkkel og setter default verdien til et tomt array. For å lese innholdet til dette atomet kan vi bruke `useRecoilValue` hooken.
@@ -125,7 +125,7 @@ Vi gir atomet en unik nøkkel og setter default verdien til et tomt array. For �
 
 </details>
 
-### Oppgave 3b)
+### Oppgave 3 b)
 
 💡 For å lage nye todo items trenger vi en setter funksjon som skal oppdatere innholdet i `todoListState`. Vi kan bruke `useSetRecoilState` for å få tak i denne funksjonen.
 
@@ -163,7 +163,7 @@ return (
 
 💡 Vi bruker `useSetRecoilState` for å få tak i en setter funksjon som vi kan bruke for å oppdatere `todoListState`. Vi bruker denne setter funksjonen for å oppdatere `todoListState` med en ny todo item.
 
-### Oppgave 3c)
+### Oppgave 3 c)
 
 🏆 Ta i bruk `useRecoilState` i stedet for `useState` i `TodoItemView.tsx` 
 
@@ -186,7 +186,7 @@ const [todoList, setTodoList] = useRecoilState<TodoItem[]>(todoListState);
 
 💡 Som du ser brukes `useRecoilState` på samme måte som `useState`. Det er bare at `useRecoilState` tar inn et atom som argument, og kan brukes av flere komponenter.
 
-## Oppgave 4: 
+## Oppgave 4 a): 
 Filtrere todo listen
 
 For å filtrere todo listen vår kan vi bruke en selector. En selector lar oss definere en funksjon som tar inn en eller flere atomer som argument og returnerer en verdi.
@@ -239,7 +239,7 @@ Ved å bruke `todoListFilterState` og `todoListState` kan vi bygge en `filteredT
   const todoList = useRecoilValue(filteredTodoListState);
 ```
 
-### Oppgave 4a)
+### Oppgave 4 b)
 🏆 Gjør det mulig å endre filter.
 
 Slik det er nå er default verdien "Show all" og det er ikke mulig å endre filteret. Vi kan ta i bruk `useRecoilState` i `TodoListFilters.tsx` for å få tak i en setter funksjon som vi kan bruke for å oppdatere `todoListFilterState` og en getter funksjon slik at vi kan vise nåværende filter.
