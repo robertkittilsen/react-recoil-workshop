@@ -186,8 +186,7 @@ const [todoList, setTodoList] = useRecoilState<TodoItem[]>(todoListState);
 
 💡 Som du ser brukes `useRecoilState` på samme måte som `useState`. Det er bare at `useRecoilState` tar inn et atom som argument, og kan brukes av flere komponenter.
 
-## Oppgave 4 a): 
-Filtrere todo listen
+### Oppgave 4 a) Filtrere todo listen
 
 For å filtrere todo listen vår kan vi bruke en selector. En selector lar oss definere en funksjon som tar inn en eller flere atomer som argument og returnerer en verdi.
 
@@ -239,14 +238,11 @@ Ved å bruke `todoListFilterState` og `todoListState` kan vi bygge en `filteredT
   const todoList = useRecoilValue(filteredTodoListState);
 ```
 
-### Oppgave 4 b)
-🏆 Gjør det mulig å endre filter.
+### Oppgave 4 b) Gjør det mulig å endre filter.
 
 Slik det er nå er default verdien "Show all" og det er ikke mulig å endre filteret. Vi kan ta i bruk `useRecoilState` i `TodoListFilters.tsx` for å få tak i en setter funksjon som vi kan bruke for å oppdatere `todoListFilterState` og en getter funksjon slik at vi kan vise nåværende filter.
 
-Implementer `useRecoilState` for `todoListFilterState` i `TodoListFilters.tsx` istedenfor `useState`.
-
-og kommenter inn `TodoListFilters` i `TodoList.tsx`
+🏆Implementer `useRecoilState` for `todoListFilterState` i `TodoListFilters.tsx` istedenfor `useState` og kommenter inn `TodoListFilters` i `TodoList.tsx`
 
 <details>
  <summary>🚨 Løsning</summary>
@@ -259,9 +255,7 @@ const [filter, setFilter] = useRecoilState(todoListFilterState);
 
 Med bare noen få linjer kode har vi klart å implementere filtrering! Vi vil bruke de samme konseptene for å implementere `TodoListStats` komponenten.
 
-### Oppgave 5) 
-
-Vise statistikk om todo listen
+### Oppgave 5) Vise statistikk om todo listen
 
 🏆 Kommenter inn `todoListStatsState` i `todoListSelector.ts`:
 
@@ -285,7 +279,7 @@ Vise statistikk om todo listen
   });
 ```
 
-`components/TodoListStats` komponenten viser antall todo items og antall ferdige todo items.
+💡 `components/TodoListStats` komponenten viser antall todo items og antall ferdige todo items.
 
 🏆 Ta i bruk `useRecoilValue` i `TodoListStats.tsx` for å koble til `todoListStatsState` selektoren.
 
