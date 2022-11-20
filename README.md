@@ -95,7 +95,7 @@ export const todoListState = atom<TodoItem[]>({
 
 ### Oppgave 3 a)
 
-Flott du har laget ditt første atom!
+💡 Flott du har laget ditt første atom!
 Vi gir atomet en unik nøkkel og setter default verdien til et tomt array. For å lese innholdet til dette atomet kan vi bruke `useRecoilValue` hooken.
 
 🏆 Ta i bruk denne hooken i `TodoList.tsx`.
@@ -129,7 +129,7 @@ Vi gir atomet en unik nøkkel og setter default verdien til et tomt array. For �
 
 💡 For å lage nye todo items trenger vi en setter funksjon som skal oppdatere innholdet i `todoListState`. Vi kan bruke `useSetRecoilState` for å få tak i denne funksjonen.
 
-🏆 Lag en `setTodoList` funksjon ved bruk av denne hooken i `TodoItemCreator.tsx` og kommenter inn `addItem()` funksjonen og kommenter inn knappen som tar i bruk `addItem()` i `TodoItemCreator.tsx`.
+🏆 Lag en `setTodoList` setter-funksjon ved bruk av denne hooken i `TodoItemCreator.tsx`. Kommenter inn `addItem()` og knappen som bruker den i return.
 
 <details>
  <summary>🚨 Løsning</summary>
