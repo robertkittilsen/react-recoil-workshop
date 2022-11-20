@@ -3,7 +3,7 @@ Dette er en workshop som viser grunnleggende bruk av recoil js gjennom å lage e
 
 ## Kom i gang
 
-Det finnes en tilhørende [presentasjon](https://docs.google.com/presentation/d/1RvUAMql55qF0Jv1tGqVDp7Xux4RWijm7g17WQRjqYyY/edit#slide=id.g1972c7b7ffd_0_135) som det kan være greit å se gjennom for å komme i gang med denne workshopen. Ellers er det bare å følge trinnene nedenfor for å komme i gang!
+Det finnes en tilhørende [presentasjon](https://docs.google.com/presentation/d/1RvUAMql55qF0Jv1tGqVDp7Xux4RWijm7g17WQRjqYyY/edit#slide=id.p) som det kan være greit å se gjennom for å komme i gang med denne workshopen. Ellers er det bare å følge trinnene nedenfor for å komme i gang!
 
 ### Dette må du ha før du starter
 
