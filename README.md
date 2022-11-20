@@ -42,15 +42,14 @@ Starter applikasjonen på adressen [http://localhost:3000](http://localhost:3000
 
 # Oppgaver
 
-I denne workshopen skal vi bygge en enkel todo liste app. Appen vil kunne gjøre følgende:
+I denne workshopen skal vi bygge en enkel todo liste app som bruker Recoil js til å håndtere state. Appen vil kunne gjøre følgende:
 * Legge til en todo
 * Fjerne en todo
 * Markere en todo som ferdig
-* Markere en todo som ikke ferdig
-* Se en oversikt over alle todos
-* Vise nyttige stats om todos
+* Filtrere todo items basert på om de er ferdig eller ikke
+* Se statistikk om todo listen.
 
-Gjennom å gjøre dette vil vi lære oss om atomer, selektorer, atom familier og hooks fra Recoil APIet.
+Gjennom å gjøre dette vil vi lære oss om atomer, selektorer og hooks fra Recoil APIet.
 
 ## Oppgave 1: Oppstart av Todo app
 
