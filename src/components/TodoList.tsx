@@ -12,14 +12,14 @@ function TodoList() {
   return (
     <>
       <TodoItemCreator />
-      <Spacer />
-      <TodoListFilters />
+      {/* <Spacer /> */}
+      {/* <TodoListFilters /> */}
       <Divider my={4} />
       {todoList.map((todoItem) => (
         <TodoItemView key={todoItem.id} item={todoItem} />
       ))}
       <Spacer my={4} />
-      <TodoListStatsView />
+      {/* <TodoListStatsView /> */}
     </>
   );
 }

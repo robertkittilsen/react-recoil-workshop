@@ -237,7 +237,7 @@ Default verdien er "Show all".
 
 Slik det er nå er default verdien "Show all" og det er ikke mulig å endre filteret. Vi kan ta i bruk `useRecoilState` i `TodoListFilters.tsx` for å få tak i en setter funksjon som vi kan bruke for å oppdatere `todoListFilterState` og en getter funksjon slik at vi kan vise nåværende filter.
 
-🏆Implementer `useRecoilState` for `todoListFilterState` i `TodoListFilters.tsx` istedenfor `useState` og kommenter inn `TodoListFilters` i `TodoList.tsx`
+🏆Implementer `useRecoilState` for `todoListFilterState` i `TodoListFilters.tsx` istedenfor `useState` og kommenter inn  `Spacer` og `TodoListFilters` i `TodoList.tsx`
 
 <details>
  <summary>🚨 Løsning</summary>
@@ -277,6 +277,7 @@ Med bare noen få linjer kode har vi klart å implementere filtrering! Vi vil br
 💡 `components/TodoListStatsView` komponenten viser antall todo items og antall ferdige todo items.
 
 🏆 Ta i bruk `useRecoilValue` i `TodoListStatsView.tsx` for å koble til `todoListStatsState` selektoren.
+Kommenter den inn i `TodoList.tsx`.
 
 <details>
  <summary>🚨 Løsning</summary>
