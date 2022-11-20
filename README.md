@@ -305,4 +305,4 @@ For å oppsummere; vi har laget en todo liste app som møter alle kravene våre:
 * Vi kan filtrere todo items basert på om de er ferdig eller ikke
 * Vi kan se statistikk over todo listen vår
 
-Håper du har fått et godt intrykk av hvordan Recoil fungerer og at du har lyst til å bruke det i dine egne prosjekter.
+Håper du har fått et godt inntrykk av hvordan Recoil fungerer og at du har lyst til å bruke det i dine egne prosjekter.
