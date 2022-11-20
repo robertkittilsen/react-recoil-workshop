@@ -95,10 +95,10 @@ export const todoListState = atom<TodoItem[]>({
 
 ### Oppgave 3 a)
 
-💡 Flott du har laget ditt første atom!
+💡 Flott, du har laget ditt første atom!
 Vi gir atomet en unik nøkkel og setter default verdien til et tomt array. For å lese innholdet til dette atomet kan vi bruke `useRecoilValue` hooken.
 
-🏆 Ta i bruk denne hooken i `TodoList.tsx`.
+🏆 Ta i bruk `useRecoilValue` med `todoListState` som parameter i `TodoList.tsx`. Kall variabelen `todoList`.
 
 <details>
  <summary>🚨 Løsning</summary>
@@ -176,7 +176,7 @@ const [todoList, setTodoList] = useRecoilState<TodoItem[]>(todoListState);
 
 </details>
 
-💡 `TodoItemView` komponenten viser verdien av todo itemet og den tillater deg å bytte tekst og slette itemet.
+💡 `TodoItemView` komponenten viser verdien av todo-objektet og den tillater deg å bytte tekst og slette objektet.
 
 💡 Vi bruker `useRecoilState` til å lese `todoListState` og til å få en setter-funksjon som vi bruker til å oppdatere todo teksten, markere den som ferdig eller slette den.
 
