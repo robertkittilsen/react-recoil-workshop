@@ -97,8 +97,9 @@ export const todoListState = atom<TodoItem[]>({
 ### Oppgave 3a)
 
 Flott du har laget ditt første atom!
+Vi gir atomet en unik nøkkel og setter default verdien til et tomt array. For å lese innholdet til dette atomet kan vi bruke `useRecoilValue` hooken.
 
-🏆 Vi gir atomet en unik nøkkel og setter default verdien til et tomt array. For å lese innholdet til dette atomet kan vi bruke `useRecoilValue` hooken. Ta i bruk denne hooken i `TodoList.tsx`.
+🏆 Ta i bruk denne hooken i `TodoList.tsx`.
 
 <details>
  <summary>🚨 Løsning</summary>
@@ -125,9 +126,11 @@ Flott du har laget ditt første atom!
 
 </details>
 
+### Oppgave 3b)
 
 💡 For å lage nye todo items trenger vi en setter funksjon som skal oppdatere innholdet i `todoListState`. Vi kan bruke `useSetRecoilState` for å få tak i denne funksjonen.
-Lag en `setTodoList` funksjon ved bruk av denne hooken i `TodoItemCreator.tsx` og kommenter inn `addItem()` funksjonen og kommenter inn knappen som tar i bruk `addItem()` i `TodoItemCreator.tsx`.
+
+🏆 Lag en `setTodoList` funksjon ved bruk av denne hooken i `TodoItemCreator.tsx` og kommenter inn `addItem()` funksjonen og kommenter inn knappen som tar i bruk `addItem()` i `TodoItemCreator.tsx`.
 
 <details>
  <summary>🚨 Løsning</summary>
@@ -159,9 +162,9 @@ return (
 
 </details>
 
-Vi bruker `useSetRecoilState` for å få tak i en setter funksjon som vi kan bruke for å oppdatere `todoListState`. Vi bruker denne setter funksjonen for å oppdatere `todoListState` med en ny todo item.
+💡 Vi bruker `useSetRecoilState` for å få tak i en setter funksjon som vi kan bruke for å oppdatere `todoListState`. Vi bruker denne setter funksjonen for å oppdatere `todoListState` med en ny todo item.
 
-### Oppgave 3b)
+### Oppgave 3c)
 
 🏆 Ta i bruk `useRecoilState` i stedet for `useState` i `TodoItemView.tsx` 
 
@@ -174,8 +177,6 @@ const [todoList, setTodoList] = useRecoilState<TodoItem[]>(todoListState);
 
 </details>
 
-## Avslutning
-
 `TodoItemView` komponenten viser verdien av todo itemet og den tillater deg å bytte tekst og slette itemet.
 
 Vi bruker `useRecoilState` til å lese `todoListState` og til å få en setter-funksjon som vi bruker til å oppdatere todo teksten, markere den som ferdig eller slette den.
@@ -184,8 +185,133 @@ Vi bruker `useRecoilState` til å lese `todoListState` og til å få en setter-f
 const [todoList, setTodoList] = useRecoilState<TodoItem[]>(todoListState);
 ```
 
+💡 Som du ser brukes `useRecoilState` på samme måte som `useState`. Det er bare at `useRecoilState` tar inn et atom som argument, og kan brukes av flere komponenter.
+
+## Oppgave 4: 
+Filtrere todo listen
+
+For å filtrere todo listen vår kan vi bruke en selector. En selector lar oss definere en funksjon som tar inn en eller flere atomer som argument og returnerer en verdi.
+
+Filter alternativene våre er: "Show all", "Show Completed" og "Show Uncompleted".
+Default verdien er "Show all".
+
+🏆 Lag et atomet i `todoListAtom.ts` som heter `todoListFilterState` med nøkkel "TodoListFilter" og default verdien "Show all".
+
+<details>
+ <summary>🚨 Løsning</summary>
+
+```js
+  export const todoListFilterState = atom({
+    key: 'TodoListFilter',
+    default: 'Show All',
+  });
+```
+
+</details>
+
+Ved å bruke `todoListFilterState` og `todoListState` kan vi bygge en `filteredTodoListState` selector som returnerer en filtrert liste.
+
+🏆 Kommenter inn denne selectoren i `todoListSelector.ts`:
+
+```js
+  const filteredTodoListState = selector({
+    key: 'FilteredTodoList',
+    get: ({ get }) => {
+      const filter = get(todoListFilterState);
+      const list = get(todoListState);
+
+      switch (filter) {
+        case 'Show Completed':
+          return list.filter((item) => item.isComplete);
+        case 'Show Uncompleted':
+          return list.filter((item) => !item.isComplete);
+        default:
+          return list;
+      }
+    },
+  });
+```
+
+`filteredTodoListState` følger med på to avhengigheter: `todoListFilterState` og `todoListState`. Når en av disse to endrer seg vil `filteredTodoListState` oppdateres.
+
+🏆 Vis den filtrerte todo listen ved å endre `components/TodoList.tsx` til å bruke `filteredTodoListState` i stedet for `todoListState`.
+
+```js
+  const todoList = useRecoilValue(filteredTodoListState);
+```
+
+### Oppgave 4a)
+🏆 Gjør det mulig å endre filter.
+
+Slik det er nå er default verdien "Show all" og det er ikke mulig å endre filteret. Vi kan ta i bruk `useRecoilState` i `TodoListFilters.tsx` for å få tak i en setter funksjon som vi kan bruke for å oppdatere `todoListFilterState` og en getter funksjon slik at vi kan vise nåværende filter.
+
+Implementer `useRecoilState` for `todoListFilterState` i `TodoListFilters.tsx` istedenfor `useState`.
+
+og kommenter inn `TodoListFilters` i `TodoList.tsx`
+
+<details>
+ <summary>🚨 Løsning</summary>
+
+```js
+const [filter, setFilter] = useRecoilState(todoListFilterState);
+```
+
+</details>
+
+Med bare noen få linjer kode har vi klart å implementere filtrering! Vi vil bruke de samme konseptene for å implementere `TodoListStats` komponenten.
+
+### Oppgave 5) 
+
+Vise statistikk om todo listen
+
+🏆 Kommenter inn `todoListStatsState` i `todoListSelector.ts`:
+
+```js
+  const todoListStatsState = selector({
+    key: 'TodoListStats',
+    get: ({ get }) => {
+      const todoList = get(todoListState);
+      const totalNum = todoList.length;
+      const totalCompletedNum = todoList.filter((item) => item.isComplete).length;
+      const totalUncompletedNum = totalNum - totalCompletedNum;
+      const percentCompleted = totalNum === 0 ? 0 : totalCompletedNum / totalNum;
+
+      return {
+        totalNum,
+        totalCompletedNum,
+        totalUncompletedNum,
+        percentCompleted,
+      };
+    },
+  });
+```
+
+`components/TodoListStats` komponenten viser antall todo items og antall ferdige todo items.
+
+🏆 Ta i bruk `useRecoilValue` i `TodoListStats.tsx` for å koble til `todoListStatsState` selektoren.
+
+<details>
+ <summary>🚨 Løsning</summary>
+
+```js
+const {
+  totalNum,
+  totalCompletedNum,
+  totalUncompletedNum,
+  percentCompleted,
+} = useRecoilValue(todoListStatsState);
+```
+
+</details>
+
+## Avslutning
+
 Og med det så har vi en fullverdig todo app! 🎉
 
-🏆🏆🏆
+For å oppsummere; vi har laget en todo liste app som møter alle kravene våre:
 
-Som du ser brukes `useRecoilState` på samme måte som `useState`. Det er bare at `useRecoilState` tar inn et atom som argument, og kan brukes av flere komponenter.
+* Vi kan legge til todo items
+* Vi kan fjerne todo items
+* Vi kan markere todo items som ferdig
+* Vi kan filtrere todo items basert på om de er ferdig eller ikke
+* Vi kan se statistikk over todo listen vår
