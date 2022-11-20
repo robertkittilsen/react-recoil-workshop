@@ -11,7 +11,7 @@ import {
 } from "@chakra-ui/react";
 import { useState } from "react";
 
-export function View() {
+export function UseRecoilStateExample() {
   const [example, setExample] = useExample();
   const [input, setInput] = useState("");
 
