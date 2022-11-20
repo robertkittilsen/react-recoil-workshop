@@ -43,4 +43,4 @@ export interface TodoListStats {
       percentCompleted,
     };
   },
-}) */;
+}); */

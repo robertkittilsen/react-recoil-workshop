@@ -3,4 +3,4 @@ import { TodoItem } from "../../components/TodoItemView";
 
 export const todoListState = {}
 
-export const todoListFilterState = {};
+export const todoListFilterState = {}

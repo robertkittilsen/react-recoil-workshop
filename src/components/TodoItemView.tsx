@@ -22,7 +22,7 @@ interface TodoItemViewProps {
   key: number;
 }
 
-const TodoItemView = ({item}: TodoItemViewProps) => {
+const TodoItemView = ({item, key}: TodoItemViewProps) => {
   const [todoList, setTodoList] = useState<TodoItem[]>([]);
   const index = todoList.findIndex((listItem) => listItem === item);
 
@@ -53,9 +53,9 @@ const TodoItemView = ({item}: TodoItemViewProps) => {
   };
 
   return (
-    <InputGroup>
+    <InputGroup key={key} my={4}>
       <Input type="text" value={item.text} onChange={editItemText} />
-      <Checkbox size="lg" mx={4} checked={item.isComplete} onChange={toggleItemCompletion} />
+      <Checkbox size="lg" mx={4} isChecked={item.isComplete} onChange={toggleItemCompletion} />
       <Button onClick={deleteItem}>Slett</Button>
     </InputGroup>
   );

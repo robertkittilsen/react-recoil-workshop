@@ -165,7 +165,7 @@ return (
 
 ### Oppgave 3 c)
 
-🏆 Ta i bruk `useRecoilState` i stedet for `useState` i `TodoItemView.tsx` 
+🏆 Ta i bruk `useRecoilState` for `todoListState` i stedet for `useState` i `TodoItemView.tsx` 
 
 <details>
  <summary>🚨 Løsning</summary>
@@ -176,21 +176,16 @@ const [todoList, setTodoList] = useRecoilState<TodoItem[]>(todoListState);
 
 </details>
 
-`TodoItemView` komponenten viser verdien av todo itemet og den tillater deg å bytte tekst og slette itemet.
+💡 `TodoItemView` komponenten viser verdien av todo itemet og den tillater deg å bytte tekst og slette itemet.
 
-Vi bruker `useRecoilState` til å lese `todoListState` og til å få en setter-funksjon som vi bruker til å oppdatere todo teksten, markere den som ferdig eller slette den.
+💡 Vi bruker `useRecoilState` til å lese `todoListState` og til å få en setter-funksjon som vi bruker til å oppdatere todo teksten, markere den som ferdig eller slette den.
 
-```js
-const [todoList, setTodoList] = useRecoilState<TodoItem[]>(todoListState);
-```
-
-💡 Som du ser brukes `useRecoilState` på samme måte som `useState`. Det er bare at `useRecoilState` tar inn et atom som argument, og kan brukes av flere komponenter.
 
 ### Oppgave 4 a) Filtrere todo listen
 
-For å filtrere todo listen vår kan vi bruke en selector. En selector lar oss definere en funksjon som tar inn en eller flere atomer som argument og returnerer en verdi.
+💡 For å filtrere todo listen vår kan vi bruke en selector. En selector lar oss definere en funksjon som tar inn en eller flere atomer som argument og returnerer en verdi.
 
-Filter alternativene våre er: "Show all", "Show Completed" og "Show Uncompleted".
+💡 Filter alternativene våre er: "Show all", "Show Completed" og "Show Uncompleted".
 Default verdien er "Show all".
 
 🏆 Lag et atomet i `todoListAtom.ts` som heter `todoListFilterState` med nøkkel "TodoListFilter" og default verdien "Show all".
@@ -207,7 +202,7 @@ Default verdien er "Show all".
 
 </details>
 
-Ved å bruke `todoListFilterState` og `todoListState` kan vi bygge en `filteredTodoListState` selector som returnerer en filtrert liste.
+💡 Ved å bruke `todoListFilterState` og `todoListState` kan vi bygge en `filteredTodoListState` selector som returnerer en filtrert liste.
 
 🏆 Kommenter inn denne selectoren i `todoListSelector.ts`:
 
@@ -230,7 +225,7 @@ Ved å bruke `todoListFilterState` og `todoListState` kan vi bygge en `filteredT
   });
 ```
 
-`filteredTodoListState` følger med på to avhengigheter: `todoListFilterState` og `todoListState`. Når en av disse to endrer seg vil `filteredTodoListState` oppdateres.
+💡 `filteredTodoListState` følger med på to avhengigheter: `todoListFilterState` og `todoListState`. Når en av disse to endrer seg vil `filteredTodoListState` oppdateres.
 
 🏆 Vis den filtrerte todo listen ved å endre `components/TodoList.tsx` til å bruke `filteredTodoListState` i stedet for `todoListState`.
 
@@ -279,9 +274,9 @@ Med bare noen få linjer kode har vi klart å implementere filtrering! Vi vil br
   });
 ```
 
-💡 `components/TodoListStats` komponenten viser antall todo items og antall ferdige todo items.
+💡 `components/TodoListStatsView` komponenten viser antall todo items og antall ferdige todo items.
 
-🏆 Ta i bruk `useRecoilValue` i `TodoListStats.tsx` for å koble til `todoListStatsState` selektoren.
+🏆 Ta i bruk `useRecoilValue` i `TodoListStatsView.tsx` for å koble til `todoListStatsState` selektoren.
 
 <details>
  <summary>🚨 Løsning</summary>
