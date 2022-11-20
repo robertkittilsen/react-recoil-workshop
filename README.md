@@ -77,7 +77,7 @@ import { RecoilRoot } from "recoil";
 
 ### Oppgave 2 b)
 
-🏆 La oss lage et atom kalt todoListState som vil holde todo-listen vår:
+🏆 La oss lage et atom kalt `todoListState` som vil holde todo-listen vår:
 
 Gå til `src/recoil/atoms/todoListAtom.ts` og legg til et atom kalt `todoListState` som har en tom liste som default verdi og "TodoList" som nøkkel.
 
@@ -188,7 +188,7 @@ const [todoList, setTodoList] = useRecoilState<TodoItem[]>(todoListState);
 💡 Filter alternativene våre er: "Show all", "Show Completed" og "Show Uncompleted".
 Default verdien er "Show all".
 
-🏆 Lag et atomet i `todoListAtom.ts` som heter `todoListFilterState` med nøkkel "TodoListFilter" og default verdien "Show all".
+🏆 Lag et atom i `todoListAtom.ts` som heter `todoListFilterState` med nøkkel "TodoListFilter" og default verdien "Show all".
 
 <details>
  <summary>🚨 Løsning</summary>
