@@ -183,12 +183,12 @@ const [todoList, setTodoList] = useRecoilState<TodoItem[]>(todoListState);
 
 ### Oppgave 4 a) Filtrere todo listen
 
-💡 For å filtrere todo listen vår kan vi bruke en selector. En selector lar oss definere en funksjon som tar inn en eller flere atomer som argument og returnerer en verdi.
+💡 For å filtrere todo listen vår kan vi bruke en selector. En selector lar oss definere en funksjon som tar inn ett eller flere atomer som argument og returnerer en verdi.
 
-💡 Filter alternativene våre er: "Show all", "Show Completed" og "Show Uncompleted".
-Default verdien er "Show all".
+💡 Filter alternativene våre er: "Show All", "Show Completed" og "Show Uncompleted".
+Default verdien er "Show All".
 
-🏆 Lag et atom i `todoListAtom.ts` som heter `todoListFilterState` med nøkkel "TodoListFilter" og default verdien "Show all".
+🏆 Lag et atom i `todoListAtom.ts` som heter `todoListFilterState` med nøkkel "TodoListFilter" og default verdien "Show All".
 
 <details>
  <summary>🚨 Løsning</summary>
@@ -305,4 +305,4 @@ For å oppsummere; vi har laget en todo liste app som møter alle kravene våre:
 * Vi kan filtrere todo items basert på om de er ferdig eller ikke
 * Vi kan se statistikk over todo listen vår
 
-Håper du har fått et godt inntrykk av hvordan Recoil fungerer og at du har lyst til å bruke det i dine egne prosjekter.
+Håper du har fått et godt inntrykk av hvordan Recoil fungerer og at du har lyst til å bruke det i dine egne prosjekter 🚀
