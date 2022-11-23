@@ -1,15 +1,15 @@
 import { Box } from "@chakra-ui/react"
 import { IteratorButton } from "./IteratorButton"
 import { ShowIterator } from "./ShowIterator"
-import { SubtractNumber } from "./SubtractNumber"
+import { Thermostat } from "./Thermostat"
 
 export const SelectorExampleApp = () => {
     return (
         <Box m={16}>
             <ShowIterator />
             <IteratorButton />
-            {/* Comment in for Selector example 2 */}
-            <SubtractNumber />
+            {/* Comment in for Writeable Selector example */}
+            {/* <Thermostat /> */}
         </Box>
     )
 }
